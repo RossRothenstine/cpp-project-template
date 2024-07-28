@@ -34,6 +34,12 @@ include(${VCPKG_DIR}/scripts/buildsystems/vcpkg.cmake)
 
 add_subdirectory(src)
 
+if (ENABLE_TESTS)
+    enable_testing()
+    add_subdirectory(test)
+endif()
+
+
 foreach (target ${TARGETS})
     add_linter_tool_to_target(
         TARGET ${target}
@@ -47,8 +53,3 @@ foreach (target ${TARGETS})
         ENABLE ${ENABLE_WARNINGS}
         AS_ERRORS ${ENABLE_WARNINGS_AS_ERRORS})
 endforeach()
-
-if (ENABLE_TESTS)
-    enable_testing()
-    add_subdirectory(test)
-endif()
