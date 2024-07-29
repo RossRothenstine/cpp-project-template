@@ -1,6 +1,10 @@
-find_package(Doxygen)
 
-if(DOXYGEN_FOUND)
+function (add_docs_target)
+    find_package(Doxygen)
+    if (NOT ${DOXYGEN_FOUND})
+        message("Doxygen not found, skipping docs generation")
+        return()
+    endif()
 
     set(DOXYGEN_DOCS_DIR ${CMAKE_SOURCE_DIR}/docs)
     set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
@@ -14,6 +18,4 @@ if(DOXYGEN_FOUND)
         COMMENT "Generating API documentation with Doxygen"
         VERBATIM
     )
-else()
-    message(STATUS "Doxygen not found, not building docs")
-endif()
+endfunction()

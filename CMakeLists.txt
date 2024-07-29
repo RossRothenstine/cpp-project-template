@@ -39,7 +39,7 @@ if (ENABLE_TESTS)
     add_subdirectory(test)
 endif()
 
-
+set(TARGETS lib app)
 foreach (target ${TARGETS})
     add_linter_tool_to_target(
         TARGET ${target}
@@ -53,3 +53,5 @@ foreach (target ${TARGETS})
         ENABLE ${ENABLE_WARNINGS}
         AS_ERRORS ${ENABLE_WARNINGS_AS_ERRORS})
 endforeach()
+
+add_docs_target(docs)

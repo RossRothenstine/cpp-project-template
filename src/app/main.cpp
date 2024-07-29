@@ -1,4 +1,4 @@
-#include <lib.hpp>
+#include <lib/lib.hpp>
 
 int main() {
     lib::hello("world");

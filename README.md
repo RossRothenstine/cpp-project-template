@@ -17,4 +17,31 @@ An opinionated C++ project template built with CMake, VCPkg, and Doxygen.
 
 ## Installation
 
-1. Specify the template when creating a new repository.
+1. Clone this repository, as your project directory:
+```bash
+git clone --recursive https://github.com/RossRothenstine/cpp-project-template.git my-project
+```
+2. Delete the git history:
+```bash
+cd my-project
+rm -rf .git
+```
+3. Initialize a new git repository:
+```bash
+git init
+```
+4. Commit the initial project:
+```bash
+git add .
+git commit -m "Initial commit"
+```
+
+## Methodology
+
+This project template is designed to be a starting point for new C++ projects. It includes a number of features that I find useful in my own projects, but feel free to modify it to suit your own needs.
+
+This template is intended to be "batteries included", but not a means as a "low code" or "no code" replacement for learning how to use the tools it includes. I recommend reading the documentation for each tool to understand how they work.
+
+The CMake project chooses to not use file globbing for sources. Instead, each source file is explicitly listed in the `Sources.cmake` file accompanying the target. This is considered a best practice for CMake projects, as per the [CMake documentation](https://cmake.org/cmake/help/latest/command/file.html#filesystem) this [blog post](https://crascit.com/2016/01/31/enhanced-source-file-handling-with-target_sources/) along with Stackoverflow posts like [this one](https://stackoverflow.com/questions/1027247/best-way-to-specify-sourcefiles-in-cmake).
+
+Source filenames are using snake_case. This is my personal preference, but it also has some real world value as on the Windows platform, file names are case insensitive. This can lead to issues when working with a case sensitive platform like Linux. Using snake_case helps to avoid these issues.
